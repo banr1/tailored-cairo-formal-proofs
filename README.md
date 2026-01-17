@@ -34,7 +34,7 @@ including:
 - basic mathematical calculations
 - operations on the secp256k1 and  secp256r1 elliptic curves
 - digital signature validation
-- procedures for simulating dictionary access in a read-only enviroment.
+- procedures for simulating dictionary access in a read-only environment.
 
 Details can be found in the file [README.md](lean3/README.md) in that folder.
 

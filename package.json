@@ -1,0 +1,19 @@
+{
+  "name": "tailored-cairo-formal-proofs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.26.0",
+  "devDependencies": {
+    "@anthropic-ai/claude-code": "^2.1.9",
+    "prettier": "^3.8.0",
+    "prettier-plugin-toml": "^2.0.6"
+  }
+}
