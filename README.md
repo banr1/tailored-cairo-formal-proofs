@@ -9,35 +9,34 @@ The folder [Verification/Semantics](Verification/Semantics) contains a specifica
 virtual machine semantics and a proof of the correctness of the Cairo STARK encoding.
 
 - The file [Cpu.lean](Verification/Semantics/Cpu.lean) contains a specification of the execution
-semantics of the Cairo CPU, used to prove soundness of Cairo programs and the correctness of the
-STARK encoding.
+  semantics of the Cairo CPU, used to prove soundness of Cairo programs and the correctness of the
+  STARK encoding.
 
 - The file [Vm.lean](Verification/Semantics/Vm.lean) contains a slightly abstracted semantics of the
-Cairo virtual machine, used to prove completeness of Cairo programs.
+  Cairo virtual machine, used to prove completeness of Cairo programs.
 
 - The [AirEncoding](Verification/Semantics/AirEncoding) folder contains a proof of the correctness
-of the algebraic encoding of execution traces of Cairo programs that are used to generate STARK
-certificates.
+  of the algebraic encoding of execution traces of Cairo programs that are used to generate STARK
+  certificates.
 
 - The [Soundness](Verification/Semantics/Soundness) folder contains infrastructure used to prove the
-soundness of Cairo programs and library functions.
+  soundness of Cairo programs and library functions.
 
 - The [Completeness](Verification/Semantics/Completeness) folder contains infrastructure used to
-prove the soundness of Cairo programs and library functions.
+  prove the soundness of Cairo programs and library functions.
 
 The folder [Verification/Libfuncs](Verification/Libfuncs) contains verifications of the
-soundness and completeness of a number of Cairo library functions, also known as *libfuncs*.
+soundness and completeness of a number of Cairo library functions, also known as _libfuncs_.
 
 The [lean3](lean3) folder contains older Lean 3 verifications of parts of the CairoZero library,
 including:
 
 - basic mathematical calculations
-- operations on the secp256k1 and  secp256r1 elliptic curves
+- operations on the secp256k1 and secp256r1 elliptic curves
 - digital signature validation
 - procedures for simulating dictionary access in a read-only environment.
 
 Details can be found in the file [README.md](lean3/README.md) in that folder.
-
 
 ## Publications
 
@@ -47,7 +46,6 @@ Details can be found in the file [README.md](lean3/README.md) in that folder.
 - Our verification tools and our verification of CairoZero code used for elliptic curve operations
   and to validate cryptographic signatures are described in the paper
   [A proof-producing compiler for blockchain applications](https://doi.org/10.4230/LIPIcs.ITP.2023.7).
-
 
 ## Build
 
@@ -61,12 +59,15 @@ should run
 ```
 lake exe cache get
 ```
+
 in this folder to get the precompiled Mathlib files.
 
 Use
+
 ```
 lake build
 ```
+
 to compile all the files listed above `Verification.lean`. One completeness proof in the
 `Libfuncs` folder is commented out because it is slow to build and requires a lot of memory;
 the remaining files take only a few minutes to compile.

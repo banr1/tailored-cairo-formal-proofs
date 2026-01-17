@@ -1,8 +1,6 @@
-Cairo verification using Lean
-=============================
+# Cairo verification using Lean
 
-Contents
---------
+## Contents
 
 This folder contains a number of related items.
 
@@ -12,7 +10,7 @@ This folder contains a number of related items.
 
 - The folder [src/starkware/cairo/lean/verification](src/starkware/cairo/lean/verification)
   contains a Python application, `cairo_verify.py`, that extends the ordinary CairoZero compiler to
-  make it *proof producing*. The verifier generates a Lean description of the compiled code,
+  make it _proof producing_. The verifier generates a Lean description of the compiled code,
   Hoare-style specifications of the source code, and proofs that the compiled code meets the
   specifications relative to the execution semantics above. Users can add their own
   specifications, prove that they follow from the specifications, and then use Lean to verify
@@ -62,9 +60,7 @@ The `cairo-v0.13.1` verifier has not been made public. The verifier and the exam
 in [src/starkware/cairo/lean/verification](src/starkware/cairo/lean/verification) correspond
 to `cairo-v0.10.1`.
 
-
-Publications
-------------
+## Publications
 
 - Our verification of the algebraic encoding of Cairo execution traces is described in the paper
   [A verified algebraic representation of Cairo program execution](https://dl.acm.org/doi/10.1145/3497775.3503675).
@@ -72,8 +68,7 @@ Publications
 - Our verification tools and our verification of CairoZero code used to validate cryptographic signatures
   are described in the paper [A proof-producing compiler for blockchain applications](https://doi.org/10.4230/LIPIcs.ITP.2023.7).
 
-What's New
-----------
+## What's New
 
 Here are some things that are new and not covered in the publications:
 
@@ -87,70 +82,82 @@ Here are some things that are new and not covered in the publications:
   to establish the associativity of the addition laws for our elliptic curves, closing a gap alluded to in
   the second publication.
 
-
-Setup
------
+## Setup
 
 To use Lean to verify the correctness of proofs (either those generated automatically by the
 verifier or those written manually for the AIR encoding or secp signatures), you need to have
 Lean 3 installed:
 
->  https://leanprover-community.github.io/lean3/get_started.html
+> https://leanprover-community.github.io/lean3/get_started.html
 
-If you fetched this repository using `git clone` rather than  `leanproject get`, use
+If you fetched this repository using `git clone` rather than `leanproject get`, use
+
 ```
   leanproject get-mathlib-cache
 ```
+
 to fetch a compiled version of the math library.
 
-
-Usage
------
+## Usage
 
 To check the correctness of the algebraic encoding of the Cairo execution semantics, run
+
 ```
   lean --make *.lean
 ```
+
 in [src/starkware/cairo/lean/semantics/air_encoding](src/starkware/cairo/lean/semantics/air_encoding).
 
 To verify the correctness of core functions in the common library relative to the
 specifications produced by the verifier, run
+
 ```
   lean --make *.lean
 ```
+
 in [src/starkware/cairo/common](src/starkware/cairo/common). For a complete verification of the
 correctness of the compiled code for `squash_dict` with respect to the CPU execution semantics,
 run
+
 ```
   lean --make *.lean
 ```
+
 in [src/starkware/cairo/common/verification](src/starkware/cairo/common/verification/).
 
 To verify the correctness of the Secp256k1 signature validation procedures relative
 to the specifications produced by the verifier, run
+
 ```
   lean --make signature_spec.lean
 ```
+
 in [src/starkware/cairo/common/cairo_secp](src/starkware/cairo/common/cairo_secp). For a complete
 verification of the correctness of the compiled code with respect to the CPU execution semantics,
 run
+
 ```
   lean --make *.lean
 ```
+
 in [src/starkware/cairo/common/cairo_secp/verification/verification](src/starkware/cairo/common/cairo_secp/verification/verification).
 You will get warnings that the file `elliptic_curves.lean` uses `sorry`. That refers to the
 associativity of the elliptic curve law, which we assert without proof.
 
 To verify the correctness of the CairoZero secp256r1 operations relative to the specifications produced by the verifier, run
+
 ```
   lean --make ec_spec.lean
 ```
+
 in [src/starkware/cairo/common/secp256r1](src/starkware/cairo/common/secp256r1). For a complete
 verification of the correctness of the compiled code with respect to the CPU execution semantics,
 run
+
 ```
   lean --make *.lean
 ```
+
 in [src/starkware/cairo/common/secp256r1/verification](src/starkware/cairo/common/secp256r1/verification).
 You will get warnings that the file `elliptic_curves.lean` uses `sorry`. That refers to the
 associativity of the elliptic curve law, which we assert without proof.
@@ -158,4 +165,3 @@ associativity of the elliptic curve law, which we assert without proof.
 To try out the version of the verifier for `cairo-v0.10.1`, follow the instructions in the
 [README](src/starkware/cairo/lean/verification/examples/math/README.md) file in
 [src/starkware/cairo/lean/verificalean4/README.mdtion/examples/math](src/starkware/cairo/lean/verification/examples/math).
-

@@ -34,6 +34,7 @@ lake build
 - `Assembly.lean`: アセンブリレベルの仕様
 
 **サブディレクトリ**:
+
 - `Soundness/`: 健全性証明インフラ（Hoare論理ベース）
 - `Completeness/`: 完全性証明インフラ
 - `AirEncoding/`: STARK証明書生成用の代数的エンコーディング正当性証明
@@ -41,6 +42,7 @@ lake build
 ### Verification/Libfuncs/ - ライブラリ関数検証
 
 各libfuncは以下のパターンに従う:
+
 ```
 [libfunc_name]_code.lean                  # 実装コード
 [libfunc_name]_soundness_spec.lean        # 健全性仕様

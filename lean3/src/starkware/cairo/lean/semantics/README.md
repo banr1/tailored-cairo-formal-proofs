@@ -1,5 +1,4 @@
-Cairo semantics in Lean
-=======================
+# Cairo semantics in Lean
 
 This folder contains a Lean formalization of the semantics of Cairo.
 

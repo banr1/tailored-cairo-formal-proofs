@@ -1,39 +1,48 @@
-Trying out the verifier
-=======================
+# Trying out the verifier
 
 To use Lean, follow the installation instructions in this repository's main README file.
 
 To run the CairoZero verifier, you need to have the CairoZero compiler installed.
 The verifier here is designed to work with version `v.0.10.1`, so you should use
+
 ```
   pip install cairo-lang==0.10.1
 ```
+
 to make sure you are installing the right version. Alternatively, you can download a zip file from
 the [cairo-lang](https://github.com/starkware-libs/cairo-lang/releases/tag/v0.10.1) repository
 and install from that:
+
 ```
   pip install cairo-lang-0.10.1.zip
 ```
+
 Note that most of the verification files in this repository correspond to Cairo version `v0.13.1`
 and were generated with a newer version of the verifier. So this version of the verifier should only
 be used on the examples from `v0.10.1`.
 
 To run the verifier on `math.cairo`, first activate the Python environment with version v.0.10.1.
 Use the command
+
 ```
   export CAIRO_PATH="{path to src}"
 ```
+
 where `{path_to_src}` is the path to the `src` folder in this repository. Then execute the following
 in this directory:
+
 ```
   python ../../cairo_verify.py math.cairo
 ```
+
 This will compile `math.cairo` and construct the relevant Lean files. In this directory, the files
 `bool_spec.lean` and `math_spec.lean` contain Hoare specifications of all the functions that are in
 the dependency chain from functions in `math.cairo`. The command
+
 ```
   lean --make math_spec.lean
 ```
+
 checks the specifications in those files and confirms that they are well formed.
 
 The verifier also creates a folder, `verification`, which contains a file , `math_code.lean`. This
@@ -47,21 +56,27 @@ code satisfies the Hoare specification, relative to the model of Cairo execution
 `lean/semantics/cpu.lean`. (The formalization in `lean/semantics/air_encoding` shows that the
 algebraic encoding of that execution model is correct, using polynomials that can again be compared
 to the data used in a STARK proof.) Use
+
 ```
   lean --make verification/*.lean
 ```
+
 to check all the proofs and generate the compiled `.olean` files.
 
 Users are free to modify the user specifications in he specification files (in this case
 `math_spec.lean`) and add anything else they want there, provided they prove that their
 specifications follow from the Hoare specifications. Running
+
 ```
   lean --make math_spec.lean
 ```
+
 again on the modified files guarantees that these files are correct, and running
+
 ```
   lean --make verification/*.lean
 ```
+
 again guarantees that the compiled code meets the new user specifications.
 
 Running the verifier on `math.cairo` again generates the Lean descriptions of the code, the Hoare
